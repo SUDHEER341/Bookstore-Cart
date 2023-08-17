@@ -4,10 +4,12 @@ namespace Bookstore.Cart.Interface
 {
     public interface ICartServices
     {
-        Task<CartEntity> AddToCart(string token, int userId, int bookId, int quantity );
-        IEnumerable<CartEntity> GetMyCart(int userId);
+        public  Task<CartEntity> AddToCart(string token, int userId, int bookId, int quantity );
+        IEnumerable<CartEntity> GetMyCart();
 
-        bool DeleteCartItemByQuantity(int id);
+        bool DeleteCartItem(int id);  
+
+
 
     }
 }

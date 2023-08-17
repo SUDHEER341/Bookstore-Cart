@@ -44,7 +44,7 @@ namespace Bookstore.Cart.Controllers
                 response.Message = "something gone wrong please check again";
             }
 
-         return response;
+            return response;
         }
 
         [Authorize]
@@ -54,7 +54,7 @@ namespace Bookstore.Cart.Controllers
         {
             int userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.Sid));
 
-            IEnumerable<CartEntity> cart = _cart.GetMyCart(userId);
+            IEnumerable<CartEntity> cart = _cart.GetMyCart();
 
             if (cart.Any())
             {
@@ -68,13 +68,13 @@ namespace Bookstore.Cart.Controllers
 
             return response;
         }
-       
+
         [Authorize]
         [HttpDelete]
         [Route("DeleteCartItem")]
         public ResponseEntity DeleteCartItemByQuantity(int id)
         {
-            bool result = _cart.DeleteCartItemByQuantity(id);
+            bool result = _cart.DeleteCartItem(id);
             if (result)
             {
                 response.Data = result;
